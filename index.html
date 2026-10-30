@@ -1,152 +1,297 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MISSION PYTHON - Cute Escape Room</title>
+    <title>MISSION PYTHON | The Cute Escape Room</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ffe6f2, #e6f4ff);
+            font-family: "Tahoma", sans-serif;
+            background: linear-gradient(135deg, #fff0f6, #f0eaff, #e8f7ff);
+            color: #444;
+            min-height: 100vh;
+        }
+
+        header {
             text-align: center;
-            padding: 40px 20px;
-            color: #55445c;
+            padding: 25px 15px;
+            background: rgba(255, 255, 255, 0.8);
         }
 
-        .container {
-            max-width: 650px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 5px 20px #d8b8ce;
+        .logo {
+            font-size: 45px;
+            margin-bottom: 10px;
         }
 
-        h1 {
-            color: #d65b9a;
+        header h1 {
+            color: #d65b91;
             font-size: 32px;
-        }
-
-        .subtitle {
-            color: #7b68a6;
-            font-size: 18px;
-        }
-
-        .rooms {
-            text-align: left;
-            line-height: 2;
-            background: #fff0f6;
-            padding: 20px 30px;
-            border-radius: 15px;
-        }
-
-        .button {
-            display: inline-block;
-            background: #e875ad;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 30px;
-            text-decoration: none;
             font-weight: bold;
-            margin: 10px;
         }
 
-        .button:hover {
-            background: #c94d8c;
+        header p {
+            color: #777;
+            margin-top: 8px;
+            font-size: 16px;
         }
 
-        footer {
-            margin-top: 25px;
+        .hero {
+            text-align: center;
+            padding: 65px 20px 50px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: #b45bd6;
+            margin-bottom: 15px;
+        }
+
+        .hero h3 {
+            font-size: 25px;
+            color: #e56c9c;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        .play-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff78a8, #b56be0);
+            color: white;
+            text-decoration: none;
+            padding: 17px 45px;
+            border-radius: 50px;
+            font-size: 23px;
+            font-weight: bold;
+            box-shadow: 0 7px 18px rgba(190, 100, 180, 0.25);
+            transition: 0.3s;
+        }
+
+        .play-button:hover {
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 10px 25px rgba(190, 100, 180, 0.35);
+        }
+
+        .sub-text {
+            margin-top: 15px;
             font-size: 13px;
             color: #888;
         }
-        .game-launch {
-    text-align: center;
-    padding: 40px 20px;
-    border-radius: 20px;
-    background: #fff0f6;
-    margin: 30px auto;
-}
 
-.game-launch h2 {
-    color: #d65b91;
-}
+        .rooms {
+            max-width: 1000px;
+            margin: auto;
+            padding: 35px 20px 60px;
+            text-align: center;
+        }
 
-.play-button {
-    display: inline-block;
-    background: #ff78a8;
-    color: white;
-    padding: 15px 35px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+        .rooms h2 {
+            color: #d65b91;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
 
-.play-button:hover {
-    background: #e94f8c;
-    transform: scale(1.05);
-}
+        .room-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .room-card {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-card .icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .room-card h3 {
+            color: #a75acb;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .room-card p {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .how-to-play {
+            background: rgba(255,255,255,0.75);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .how-to-play h2 {
+            color: #d65b91;
+            margin-bottom: 20px;
+            font-size: 27px;
+        }
+
+        .how-to-play p {
+            line-height: 2;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            background: #f8e7f4;
+            color: #777;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            .hero h3 {
+                font-size: 21px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .play-button {
+                font-size: 19px;
+                padding: 15px 35px;
+            }
+        }
     </style>
 </head>
 
 <body>
-<section class="game-launch">
-    <h2>MISSION PYTHON</h2>
-    <p>The Cute Escape Room</p>
-    <p>พร้อมหรือยังที่จะเข้าสู่ภารกิจ Escape Room?</p>
 
-    <a
-        href="mission-python-escape-room-vzmnbfxkgvl3pqkj6dpykb.streamlit.app"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="play-button">
-        🎮 PLAY GAME
-    </a>
-</section>
-<div class="container">
+    <!-- HEADER -->
+    <header>
+        <div class="logo">🔐</div>
+        <h1>MISSION PYTHON</h1>
+        <p>Welcome to The Cute Escape Room</p>
+    </header>
 
-    <h1>🔐 MISSION PYTHON</h1>
-    <div class="subtitle">THE CUTE ESCAPE ROOM</div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h2>🐍 THE CUTE ESCAPE ROOM</h2>
+        <h3>ภารกิจพิชิตห้องลับ Python</h3>
 
-    <h2>🎮 ยินดีต้อนรับสู่ห้องปริศนา Python!</h2>
+        <p>
+            เตรียมตัวให้พร้อม! แล้วออกเดินทางไปกับภารกิจ Escape Room
+            ที่จะพาคุณฝึกทักษะการเขียนโปรแกรม Python
+            ผ่านคำถามและความท้าทายทั้ง 5 ห้อง
+        </p>
 
-    <p>
-        คุณติดอยู่ในห้องทดลอง AI
-        จงไขปริศนา Python ทั้ง 5 ห้อง
-        เพื่อรวบรวม Digital Keys และหนีออกไปให้ได้!
-    </p>
+        <a
+            href="https://mission-python-escape-room-k8ssutbuwcwnksbrfp44qx.streamlit.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="play-button">
+            🎮 PLAY GAME
+        </a>
 
-    <div class="rooms">
-        <h3>🗝️ ภารกิจทั้ง 5 ห้อง</h3>
-        <div>🚪 Room 1: The Gate of Conditions</div>
-        <div>🔁 Room 2: The Loop Chamber</div>
-        <div>🧪 Room 3: The Function Lab</div>
-        <div>🐞 Room 4: The Debugging Room</div>
-        <div>🏆 Room 5: The Final Challenge</div>
-    </div>
+        <div class="sub-text">
+            กดปุ่มเพื่อเข้าสู่เกมและเริ่มภารกิจของคุณ
+        </div>
+    </section>
 
-    <h3>✨ กติกาการเล่น</h3>
-    <p>
-        ตอบถูก +10 คะแนน<br>
-        ใช้คำใบ้ -2 คะแนน<br>
-        เวลา 3 นาทีต่อห้อง
-    </p>
+    <!-- GAME ROOMS -->
+    <section class="rooms">
+        <h2>✨ พบกับ 5 ห้องแห่งภารกิจ ✨</h2>
 
-    <a class="button"
-       href="MISSION_PYTHON_Cute_Escape_Room.ipynb">
-       📘 ดูไฟล์เกม Notebook
-    </a>
+        <div class="room-container">
 
+            <div class="room-card">
+                <div class="icon">🚪</div>
+                <h3>Room 1</h3>
+                <p>The Gate of Conditions<br>ฝึกการใช้ if / elif / else</p>
+            </div>
+
+            <div class="room-card">
+                <div class="icon">🔄</div>
+                <h3>Room 2</h3>
+                <p>The Loop Chamber<br>ฝึก for / while / range</p>
+            </div>
+
+            <div class="room-card">
+                <div class="icon">🧪</div>
+                <h3>Room 3</h3>
+                <p>The Function Lab<br>ฝึก def / parameters / return</p>
+            </div>
+
+            <div class="room-card">
+                <div class="icon">🛠️</div>
+                <h3>Room 4</h3>
+                <p>The Debugging Room<br>ฝึกแก้ไขข้อผิดพลาดของโค้ด</p>
+            </div>
+
+            <div class="room-card">
+                <div class="icon">🏆</div>
+                <h3>Room 5</h3>
+                <p>The Final Challenge<br>ทบทวนความรู้ Python</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW TO PLAY -->
+    <section class="how-to-play">
+        <h2>💡 วิธีการเล่น</h2>
+
+        <p>
+            🎯 ตอบคำถามให้ถูกต้องเพื่อสะสมคะแนน<br>
+            ⭐ ใช้คำใบ้เพื่อช่วยไขปริศนา<br>
+            ⏰ ทำภารกิจให้สำเร็จภายในเวลาที่กำหนด<br>
+            🔓 ผ่านแต่ละห้องเพื่อปลดล็อกห้องถัดไป<br>
+            🏆 พิชิตทั้ง 5 ห้องเพื่อเป็นสุดยอด Python Master!
+        </p>
+
+        <br>
+
+        <a
+            href="https://mission-python-escape-room-k8ssutbuwcwnksbrfp44qx.streamlit.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="play-button">
+            🚀 เริ่มภารกิจเลย!
+        </a>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        Python Creative Challenge<br>
-        MISSION PYTHON: The Cute Escape Room
+        <p>MISSION PYTHON: The Cute Escape Room</p>
+        <p>Learning Python is Fun! 💗</p>
     </footer>
-
-</div>
 
 </body>
 </html>
